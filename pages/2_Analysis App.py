@@ -36,11 +36,12 @@ wordcloud = WordCloud(width = 800, height = 800,
                       stopwords = set(['s']),  # Any stopwords you'd like to exclude
                       min_font_size = 10).generate(feature_text)
 
-plt.figure(figsize = (8, 8), facecolor = None)
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.tight_layout(pad = 0)
-st.pyplot()
+# Use a figure handle for thread safety and future compatibility
+fig, ax = plt.subplots(figsize=(8, 8), facecolor=None)
+ax.imshow(wordcloud, interpolation='bilinear')
+ax.axis("off")
+plt.tight_layout(pad=0)
+st.pyplot(fig)
 
 st.header('Area Vs Price')
 
