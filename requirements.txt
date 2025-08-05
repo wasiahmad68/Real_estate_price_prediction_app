@@ -7,3 +7,5 @@ wordcloud
 matplotlib
 seaborn
 gdown
+scikit-learn
+xgboost
