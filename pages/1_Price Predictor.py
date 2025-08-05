@@ -6,11 +6,29 @@ import numpy as np
 st.set_page_config(page_title="Viz Demo")
 
 
+# Download df.pkl and pipeline.pkl from Google Drive if not present
+import gdown
+import os
 
-with open('df.pkl','rb') as file:
+# Google Drive file IDs
+df_file_id = '1nXsnS5M-8KPistM4SUwgyMjuzJdU4Znf'
+pipeline_file_id = '1boJKsuwukxxEok_NFLBcfeFS6vF-Cb2r'
+
+df_output = 'df.pkl'
+pipeline_output = 'pipeline.pkl'
+
+if not os.path.exists(df_output):
+    url = f'https://drive.google.com/uc?id={df_file_id}'
+    gdown.download(url, df_output, quiet=False)
+
+if not os.path.exists(pipeline_output):
+    url = f'https://drive.google.com/uc?id={pipeline_file_id}'
+    gdown.download(url, pipeline_output, quiet=False)
+
+with open(df_output,'rb') as file:
     df = pickle.load(file)
 
-with open('pipeline.pkl','rb') as file:
+with open(pipeline_output,'rb') as file:
     pipeline = pickle.load(file)
 
 
